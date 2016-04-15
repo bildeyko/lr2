@@ -1,4 +1,4 @@
 # Задание
 Провести интеграционное тестирование программы, осуществляющей вычисление системы функций (в соответствии с вариантом)
 ##### Вариант 8901
-![alt text](https://avatars2.githubusercontent.com/u/11632545?v=3&s=200)
+![alt text](https://github.com/larechik/lr2/blob/master/img/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.JPG)
