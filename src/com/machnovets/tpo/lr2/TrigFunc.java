@@ -54,7 +54,7 @@ public class TrigFunc implements ITrigonometry {
     public double cos(double x, double accuracy)
     {
         double y, tmp;
-        tmp = Math.pow(sin(x,accuracy),2) + 1;
+        tmp = 1 - Math.pow(sin(x,accuracy),2);
         y = Math.pow(tmp, 0.5);
         return y;
     }
