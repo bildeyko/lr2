@@ -36,11 +36,7 @@ public class LnFunc implements ILogarifm {
         }
         y *= 2;
 
-<<<<<<< HEAD
-        //Log.write("ln",x,y);
 
-=======
->>>>>>> refs/remotes/origin/test
         return y;
     }
 
