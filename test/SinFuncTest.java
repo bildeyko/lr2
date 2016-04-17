@@ -83,7 +83,6 @@ public class SinFuncTest {
     public void SinTestPointPi(){
         sin=0;
         res=func.sin(Math.PI,accuracy);
-        System.out.println(sin+" "+res);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
@@ -117,13 +116,13 @@ public class SinFuncTest {
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
-    public void SinTesrPosInf(){
+    public void SinTestPosInf(){
         sin=Double.NaN;
         res=func.sin(Double.POSITIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
-    public void SinTesrNegInf(){
+    public void SinTestNegInf(){
         sin=Double.NaN;
         res=func.sin(Double.NEGATIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);

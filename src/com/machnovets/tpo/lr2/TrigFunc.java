@@ -7,14 +7,8 @@ import java.math.RoundingMode;
  * Created by Makhnovets on 15.04.2016.
  */
 public class TrigFunc implements ITrigonometry {
-    public double sin(double x, double accuracy){
-        boolean negative;
+    private double offset(double x){
         Double buf;
-        Double y=0.0;
-        int n=0;
-        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
-            return Double.NaN;
-        }
         if(x<-Math.PI||x>Math.PI){
             buf=x/(2*Math.PI);
             if (x%(2*Math.PI)==0){
@@ -22,14 +16,32 @@ public class TrigFunc implements ITrigonometry {
             }
             x-=2*Math.PI*(buf.intValue()+1);
         }
+        return x;
+    }
+    private boolean negative(double x){
         if (x>=-Math.PI&&x<0){
-            negative=true;
-            x=Math.abs(x);
+            return true;
+            //x=Math.abs(x);
         }
         else
         {
-            negative=false;
+            return false;
         }
+
+    }
+    public double sin(double x, double accuracy){
+        boolean negative;
+        Double y=0.0;
+        int n=0;
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
+        x=offset(x);
+        negative=negative(x);
+
+        if (negative)
+            x=Math.abs(x);
+
         while (true){
             BigDecimal fIt=BigDecimal.valueOf(-1);
             fIt=fIt.pow(n);
@@ -53,10 +65,20 @@ public class TrigFunc implements ITrigonometry {
 
     public double cos(double x, double accuracy)
     {
+        boolean negative;
         double y, tmp;
+        x=offset(x);
+        negative=negative(x);
+
+//        if (negative)
+//            x=Math.abs(x);
+
         tmp = 1 - Math.pow(sin(x,accuracy),2);
         y = Math.pow(tmp, 0.5);
-        return y;
+        if (x>-Math.PI/2&&x<Math.PI/2)
+            return y;
+        else
+            return -y;
     }
 
     public double cot(double x, double accuracy)

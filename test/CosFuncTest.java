@@ -17,7 +17,7 @@ public class CosFuncTest {
     public void Before(){
         func = new TrigFunc();
         res = 0;
-        accuracy = 0.001;
+        accuracy = 0.0001;
         errorStr = "cos = %f res = %f";
     }
 
