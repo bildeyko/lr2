@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * Created by Makhnovets on 15.04.2016.
  */
-public class TrigFunc {
+public class TrigFunc implements ITrigonometry {
     public double sin(double x, double accuracy){
         boolean negative;
         Double buf;
@@ -49,6 +49,35 @@ public class TrigFunc {
         else
             return y;
 
+    }
+
+    public double cos(double x, double accuracy)
+    {
+        double y, tmp;
+        tmp = Math.pow(sin(x,accuracy),2) + 1;
+        y = Math.pow(tmp, 0.5);
+        return y;
+    }
+
+    public double cot(double x, double accuracy)
+    {
+        double y;
+        y = cos(x, accuracy) / sin(x, accuracy);
+        return y;
+    }
+
+    public double sec(double x, double accuracy)
+    {
+        double y;
+        y = 1 / cos(x, accuracy);
+        return y;
+    }
+
+    public double tan(double x, double accuracy)
+    {
+        double y;
+        y = sin(x, accuracy) / cos(x, accuracy);
+        return y;
     }
 
     private BigDecimal factorial(int num) {
