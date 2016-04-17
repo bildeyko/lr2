@@ -21,7 +21,7 @@ public class SinFuncTest {
     public void Before(){
         func = new TrigFunc();
         res = 0;
-        accuracy = 0.001;
+        accuracy = 0.01;
         errorStr = "sin = %f res = %f";
     }
 
@@ -39,92 +39,91 @@ public class SinFuncTest {
     }
     @Test
     public void SinTestPoint0_l(){
-         sin=-0.0299955;
+        sin=-0.0299955;
         res=func.sin(-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPiDiv2(){
-         sin=1;
+        sin=1;
         res=func.sin(Math.PI/2,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPiDiv2_r(){
-         sin=0.999550034;
+        sin=0.999550034;
         res=func.sin(Math.PI/2+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPiDiv2_l(){
-         sin=0.999550034;
+        sin=0.999550034;
         res=func.sin(Math.PI/2-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPiDiv2(){
-         sin=-1;
+        sin=-1;
         res=func.sin(-Math.PI/2,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPiDiv2_r(){
-         sin=-0.999550034;
+        sin=-0.999550034;
         res=func.sin(-Math.PI/2+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPiDiv2_l(){
-         sin=-0.999550034;
+        sin=-0.999550034;
         res=func.sin(-Math.PI/2-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPi(){
-         sin=0;
+        sin=0;
         res=func.sin(Math.PI,accuracy);
-        System.out.println(sin+" "+res);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPi_r(){
-         sin=-0.0299955;
+        sin=-0.0299955;
         res=func.sin(Math.PI+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointPi_l(){
-         sin=0.0299955;
+        sin=0.0299955;
         res=func.sin(Math.PI-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPi(){
-         sin=0;
+        sin=0;
         res=func.sin(-Math.PI,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPi_r(){
-         sin=-0.0299955;
+        sin=-0.0299955;
         res=func.sin(-Math.PI+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
     public void SinTestPointMPi_l(){
-         sin=0.0299955;
+        sin=0.0299955;
         res=func.sin(-Math.PI-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
-    public void SinTesrPosInf(){
-         sin=Double.NaN;
+    public void SinTestPosInf(){
+        sin=Double.NaN;
         res=func.sin(Double.POSITIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }
     @Test
-    public void SinTesrNegInf(){
-         sin=Double.NaN;
+    public void SinTestNegInf(){
+        sin=Double.NaN;
         res=func.sin(Double.NEGATIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, sin, res),sin,res,0.01);
     }

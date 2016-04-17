@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * Created by Makhnovets on 17.04.2016.
  */
-public class LnFunc {
+public class LnFunc implements ILogarifm {
     public double ln(double x,double accuracy){
         double y=0;
         int n=1;
@@ -36,6 +36,17 @@ public class LnFunc {
         }
         y *= 2;
 
+
         return y;
+    }
+
+    @Override
+    public double log5(double x, double accuracy) {
+        return ln(x,accuracy)/ln(5,accuracy);
+    }
+
+    @Override
+    public double log5pow2(double x, double accuracy) {
+        return Math.pow(ln(x,accuracy)/ln(5,accuracy),2);
     }
 }
