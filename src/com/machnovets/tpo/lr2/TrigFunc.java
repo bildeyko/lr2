@@ -7,14 +7,21 @@ import java.math.RoundingMode;
  * Created by Makhnovets on 15.04.2016.
  */
 public class TrigFunc implements ITrigonometry {
-    private double offset(double x){
-        Double buf;
-        if(x<-Math.PI||x>Math.PI){
-            buf=x/(2*Math.PI);
+    private double offset(double x,double accuracy){
+        BigDecimal buf;
+        boolean neg;
+        BigDecimal newX=BigDecimal.valueOf(x);
+        if(newX.doubleValue()<-Math.PI||newX.doubleValue()>Math.PI){
+            buf=newX.divide(BigDecimal.valueOf(2*Math.PI),BigDecimal.valueOf(accuracy).scale(),RoundingMode.HALF_UP);
+            System.out.println(" buf="+buf);
             if (x%(2*Math.PI)==0){
-                x-=2*Math.PI*buf.intValue();
+                x=x-2*Math.PI*buf.intValue();
             }
-            x-=2*Math.PI*(buf.intValue()+1);
+            neg=negative(x);
+            if(neg)
+            x=x-2*Math.PI*(buf.intValue()+1);
+            else
+                x-=2*Math.PI*(buf.intValue()-1);
         }
         return x;
     }
@@ -36,7 +43,7 @@ public class TrigFunc implements ITrigonometry {
         if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
             return Double.NaN;
         }
-        x=offset(x);
+        x=offset(x,accuracy);
         negative=negative(x);
 
         if (negative)
@@ -65,17 +72,20 @@ public class TrigFunc implements ITrigonometry {
 
     public double cos(double x, double accuracy)
     {
-        boolean negative;
+        //boolean negative;
         double y, tmp;
-        x=offset(x);
-        negative=negative(x);
+        System.out.println(" x="+x);
+        x=offset(x,accuracy);
+        System.out.println(" x="+x);
+       //negative=negative(x);
 
 //        if (negative)
 //            x=Math.abs(x);
-
-        tmp = 1 - Math.pow(sin(x,accuracy),2);
-        y = Math.pow(tmp, 0.5);
-        if (x>-Math.PI/2&&x<Math.PI/2)
+        tmp=sin(x,accuracy);
+        y=BigDecimal.valueOf(1).subtract(BigDecimal.valueOf(tmp).pow(2)).abs().doubleValue();
+        y=Math.pow(y,0.5);
+        System.out.println("cos="+y+" x="+x);
+        if (x>=-Math.PI/2&&x<=Math.PI/2)
             return y;
         else
             return -y;

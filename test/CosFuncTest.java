@@ -17,7 +17,7 @@ public class CosFuncTest {
     public void Before(){
         func = new TrigFunc();
         res = 0;
-        accuracy = 0.0001;
+        accuracy = 0.00001;
         errorStr = "cos = %f res = %f";
     }
 
@@ -79,21 +79,18 @@ public class CosFuncTest {
     public void cosTestPoint3PiDiv2(){
         cos=0;
         res=func.cos(3*Math.PI/2,accuracy);
-        System.out.println(cos+" "+res);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPoint3PiDiv2_l(){
         cos=-0.0299955;
         res=func.cos(3*Math.PI/2-0.03,accuracy);
-        System.out.println(cos+" "+res);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPoint3PiDiv2_r(){
         cos=0.0299955;
-        res=func.cos(3*Math.PI/2,accuracy);
-        System.out.println(cos+" "+res);
+        res=func.cos(3*Math.PI/2+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
@@ -124,6 +121,12 @@ public class CosFuncTest {
     public void cosTestNegInf(){
         cos=Double.NaN;
         res=func.cos(Double.NEGATIVE_INFINITY,accuracy);
+        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
+    }
+    @Test
+    public void cosTestNik(){
+        cos=0.8990570;
+        res=func.cos(-5.830000,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
 }
