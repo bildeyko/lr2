@@ -58,7 +58,7 @@ public class TrigFuncTest {
     @Test
     public void SinTestPointMPiDiv2(){
         double sin=-1;
-        res=func.sin(Math.PI/2,accurancy);
+        res=func.sin(-Math.PI/2,accurancy);
         Assert.assertEquals("error: sin=" +sin+" res="+res,sin,res,0.01);
     }
     @Test

@@ -28,11 +28,14 @@ public class TrigFunc {
             negative=false;
         }
         while (true){
-            BigDecimal tmpBig=BigDecimal.valueOf(Math.pow(-1,n));
-            tmpBig.multiply(BigDecimal.valueOf(Math.pow(x,2*n+1)));
-            tmpBig.divide(factorial(2*n+1),BigDecimal.valueOf(accuracy).scale(),RoundingMode.HALF_UP);
-            Double tmpDub=Math.abs(tmpBig.doubleValue());
-            if (tmpDub>accuracy)
+            BigDecimal fIt=BigDecimal.valueOf(-1);
+            fIt=fIt.pow(n);
+            BigDecimal sIt=BigDecimal.valueOf(x);
+            sIt=sIt.pow(2*n+1);
+            BigDecimal tmpBig=fIt.multiply(sIt);
+            tmpBig=tmpBig.divide(factorial(2*n+1),BigDecimal.valueOf(accuracy).scale(),RoundingMode.HALF_UP);
+            Double tmpDub=tmpBig.doubleValue();
+            if (Math.abs(tmpDub)>accuracy)
                 y+=tmpDub;
             else
                 break;
