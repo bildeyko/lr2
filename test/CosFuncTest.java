@@ -118,15 +118,15 @@ public class CosFuncTest {
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTestNegInf(){
+    public void cosTestNegInf(){ 
         cos=Double.NaN;
         res=func.cos(Double.NEGATIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestNik(){
-        cos=0.8990570;
-        res=func.cos(-5.830000,accuracy);
+        cos=-0.889394;
+        res=func.cos(-8.950000,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
 }
