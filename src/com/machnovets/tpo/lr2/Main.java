@@ -6,6 +6,11 @@ package com.machnovets.tpo.lr2;
 public class Main {
     static public void main(String args[])
     {
+        genValues();
+    }
+
+    static private void genValues()
+    {
         TrigFunc trig = new TrigFunc();
         double accuracy = 0.000000001;
         double y;
@@ -16,7 +21,7 @@ public class Main {
             Log.write(i,y);
         }
         Log.open("cos.csv");
-        for(double i=-9.0; i<=0.0; i+=0.01)
+        for(double i=-6.0; i<=0.0; i+=0.01)
         {
             y = trig.cos(i, accuracy);
             Log.write(i,y);
@@ -39,7 +44,6 @@ public class Main {
             y = trig.tan(i, accuracy);
             Log.write(i,y);
         }
-
     }
 
 }

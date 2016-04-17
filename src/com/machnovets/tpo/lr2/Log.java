@@ -7,10 +7,6 @@ import java.io.*;
  */
 public class Log {
     static String filename;
-    static
-    {
-
-    }
 
     public static void write(double x, double y)
     {
