@@ -1,11 +1,14 @@
 package com.machnovets.tpo.lr2;
 
+import com.machnovets.tpo.lr2.Dummies.TrigDummies;
+
 /**
  * Created by bilde_000 on 17.04.2016.
  */
 public class Main {
     static public void main(String args[])
     {
+        TrigDummies dummies = new TrigDummies();
         genValues();
     }
 
