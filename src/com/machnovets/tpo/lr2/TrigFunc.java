@@ -12,6 +12,9 @@ public class TrigFunc {
         Double buf;
         Double y=0.0;
         int n=0;
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
         if(x<-Math.PI||x>Math.PI){
             buf=x/(2*Math.PI);
             if (x%(2*Math.PI)==0){
