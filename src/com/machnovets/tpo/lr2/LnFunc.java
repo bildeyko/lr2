@@ -34,6 +34,10 @@ public class LnFunc {
                 break;
             n++;
         }
-        return y*2;
+        y *= 2;
+
+        Log.write("ln",x,y);
+
+        return y;
     }
 }
