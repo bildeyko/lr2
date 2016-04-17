@@ -14,10 +14,12 @@ public class TrigFuncTest {
     TrigFunc func=new TrigFunc();
     double accuracy =0.001;
     double res = func.sin(0,accuracy);
+
     double sin;
     @Before
     public void Before(){
         res=0;
+
     }
 
     @Test
