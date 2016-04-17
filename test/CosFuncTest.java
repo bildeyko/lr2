@@ -41,44 +41,58 @@ public class CosFuncTest {
     }
     @Test
     public void cosTestPointPiDiv2(){
-        cos=1;
+        cos=0;
         res=func.cos(Math.PI/2,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPointPiDiv2_r(){
-        cos=0.999550034;
+        cos=-0.0299955;
         res=func.cos(Math.PI/2+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPointPiDiv2_l(){
-        cos=0.999550034;
+        cos=0.0299955;
         res=func.cos(Math.PI/2-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPointMPiDiv2(){
-        cos=-1;
+        cos=0;
         res=func.cos(-Math.PI/2,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPointMPiDiv2_r(){
-        cos=-0.999550034;
+        cos=0.0299955;
         res=func.cos(-Math.PI/2+0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
     public void cosTestPointMPiDiv2_l(){
-        cos=-0.999550034;
+        cos=-0.0299955;
         res=func.cos(-Math.PI/2-0.03,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTestPointPi(){
-        cos=-1;
-        res=func.cos(Math.PI,accuracy);
+    public void cosTestPoint3PiDiv2(){
+        cos=0;
+        res=func.cos(3*Math.PI/2,accuracy);
+        System.out.println(cos+" "+res);
+        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
+    }
+    @Test
+    public void cosTestPoint3PiDiv2_l(){
+        cos=-0.0299955;
+        res=func.cos(3*Math.PI/2-0.03,accuracy);
+        System.out.println(cos+" "+res);
+        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
+    }
+    @Test
+    public void cosTestPoint3PiDiv2_r(){
+        cos=0.0299955;
+        res=func.cos(3*Math.PI/2,accuracy);
         System.out.println(cos+" "+res);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
@@ -95,31 +109,19 @@ public class CosFuncTest {
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTestPointMPi(){
-        cos=0;
+    public void cosTestPointPi(){
+        cos=-1;
         res=func.cos(-Math.PI,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTestPointMPi_r(){
-        cos=-0.0299955;
-        res=func.cos(-Math.PI+0.03,accuracy);
-        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
-    }
-    @Test
-    public void cosTestPointMPi_l(){
-        cos=0.0299955;
-        res=func.cos(-Math.PI-0.03,accuracy);
-        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
-    }
-    @Test
-    public void cosTesrPocosf(){
+    public void cosTestPosinsf(){
         cos=Double.NaN;
         res=func.cos(Double.POSITIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTesrNegInf(){
+    public void cosTestNegInf(){
         cos=Double.NaN;
         res=func.cos(Double.NEGATIVE_INFINITY,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
