@@ -36,7 +36,7 @@ public class LnFunc implements ILogarifm {
         }
         y *= 2;
 
-        Log.write("ln",x,y);
+        //Log.write("ln",x,y);
 
         return y;
     }
