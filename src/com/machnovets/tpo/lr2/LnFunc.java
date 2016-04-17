@@ -36,8 +36,6 @@ public class LnFunc {
         }
         y *= 2;
 
-        Log.write("ln",x,y);
-
         return y;
     }
 }
