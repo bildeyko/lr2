@@ -124,9 +124,21 @@ public class CosFuncTest {
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
     @Test
-    public void cosTestNik(){
-        cos=0.8990570;
-        res=func.cos(-5.830000,accuracy);
+    public void cosTestNeg1(){
+        cos=0.993;
+        res=func.cos(-6.28,accuracy);
+        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
+    }
+    @Test
+    public void cosTestNeg2(){
+        cos=0.993;
+        res=func.cos(-6.29,accuracy);
+        Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
+    }
+    @Test
+    public void cosTestNeg3(){
+        cos=0.993;
+        res=func.cos(-6.27,accuracy);
         Assert.assertEquals(String.format(errorStr, cos, res),cos,res,0.01);
     }
 }
