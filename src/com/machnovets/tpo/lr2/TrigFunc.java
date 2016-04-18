@@ -1,5 +1,8 @@
 package com.machnovets.tpo.lr2;
 
+import com.machnovets.tpo.lr2.Dummies.Dummies;
+import com.machnovets.tpo.lr2.Dummies.TrigDummies;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -96,6 +99,31 @@ public class TrigFunc implements ITrigonometry {
             return y;
     }
 
+    public double cos(double x, double accuracy, TrigDummies dummy)
+    {
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
+        boolean negative;
+
+        double y, tmp;
+
+        x=offset(x,accuracy);
+
+        if (offset(x,accuracy)>=-Math.PI/2&&offset(x,accuracy)<=Math.PI/2)
+            negative=false;
+        else
+            negative=true;
+        tmp=dummy.sin(x,accuracy);
+        y=BigDecimal.valueOf(1).subtract(BigDecimal.valueOf(tmp).pow(2)).abs().doubleValue();
+        y=Math.pow(y,0.5);
+
+        if (negative)
+            return -y;
+        else
+            return y;
+    }
+
     public double cot(double x, double accuracy)
     {
         if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
@@ -103,6 +131,16 @@ public class TrigFunc implements ITrigonometry {
         }
         double y;
         y = cos(x, accuracy) / sin(x, accuracy);
+        return y;
+    }
+
+    public double cot(double x, double accuracy, TrigDummies dummy)
+    {
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
+        double y;
+        y = dummy.cos(x, accuracy) / dummy.sin(x, accuracy);
         return y;
     }
 
@@ -116,6 +154,16 @@ public class TrigFunc implements ITrigonometry {
         return y;
     }
 
+    public double sec(double x, double accuracy, TrigDummies dummy)
+    {
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
+        double y;
+        y = 1 / dummy.cos(x, accuracy);
+        return y;
+    }
+
     public double tan(double x, double accuracy)
     {
         if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
@@ -123,6 +171,16 @@ public class TrigFunc implements ITrigonometry {
         }
         double y;
         y = sin(x, accuracy) / cos(x, accuracy);
+        return y;
+    }
+
+    public double tan(double x, double accuracy, TrigDummies dummy)
+    {
+        if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
+            return Double.NaN;
+        }
+        double y;
+        y = dummy.sin(x, accuracy) / dummy.cos(x, accuracy);
         return y;
     }
 
