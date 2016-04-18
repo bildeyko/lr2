@@ -23,8 +23,68 @@ public class CotFuncTest {
 
     @Test
     public void CotTestPoint0(){
+        cot=Double.POSITIVE_INFINITY;
+        res=func.cot(0,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPoint0_l(){
+        cot=-33.3233327;
+        res=func.cot(-0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPoint0_r(){
+        cot=33.3233327;
+        res=func.cot(0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPiDiv2(){
+        cot=0;
+        res=func.cot(Math.PI/2,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPiDiv2_l(){
+        cot=0.030009;
+        res=func.cot((Math.PI/2)-0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPiDiv2_r(){
+        cot=-0.030009;
+        res=func.cot(Math.PI/2+0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPi(){
+        cot=Double.POSITIVE_INFINITY;
+        res=func.cot(Math.PI,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPi_l(){
+        cot=-33.3233327;
+        res=func.cot(Math.PI-0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPi_r(){
+        cot=33.3233327;
+        res=func.cot(Math.PI+0.03,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPointPiDiv4(){
         cot=1;
-        res=func.cos(0,accuracy);
+        res=func.cot(Math.PI/4,accuracy);
+        Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
+    }
+    @Test
+    public void CotTestPoint3PiDiv4(){
+        cot=-1;
+        res=func.cot(3*Math.PI/4,accuracy);
         Assert.assertEquals(String.format(errorStr, cot, res),cot,res,0.01);
     }
 }
