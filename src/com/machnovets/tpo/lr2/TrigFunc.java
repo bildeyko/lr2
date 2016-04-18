@@ -12,7 +12,6 @@ public class TrigFunc implements ITrigonometry {
         BigDecimal newX=BigDecimal.valueOf(x);
         if(newX.doubleValue()<-Math.PI||newX.doubleValue()>Math.PI){
             buf=newX.divide(BigDecimal.valueOf(2*Math.PI),BigDecimal.valueOf(accuracy).scale(),RoundingMode.HALF_UP);
-            System.out.println(" buf="+buf);
             if (x%(2*Math.PI)==0){
                 x=x-2*Math.PI*buf.intValue();
             }
@@ -80,9 +79,9 @@ public class TrigFunc implements ITrigonometry {
         boolean negative;
 
         double y, tmp;
-        System.out.println(" x="+x);
+
         x=offset(x,accuracy);
-        System.out.println(" x="+x);
+
         if (offset(x,accuracy)>=-Math.PI/2&&offset(x,accuracy)<=Math.PI/2)
             negative=false;
         else
@@ -90,7 +89,7 @@ public class TrigFunc implements ITrigonometry {
         tmp=sin(x,accuracy);
         y=BigDecimal.valueOf(1).subtract(BigDecimal.valueOf(tmp).pow(2)).abs().doubleValue();
         y=Math.pow(y,0.5);
-        System.out.println("cos="+y+" x="+x);
+
         if (negative)
             return -y;
         else
