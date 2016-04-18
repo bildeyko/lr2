@@ -27,10 +27,9 @@ public class TrigFunc implements ITrigonometry {
         }
         return x;
     }
-    private boolean negative(double x){
+    private boolean negativeForSin(double x){
         if (x>=-Math.PI&&x<0){
             return true;
-            //x=Math.abs(x);
         }
         else
         {
@@ -42,22 +41,15 @@ public class TrigFunc implements ITrigonometry {
         boolean negative;
         Double y=0.0;
         int n=0;
-        if (x>=-Math.PI&&x<0){
-            negative=true;
-            //x=Math.abs(x);
-        }
-        else
-        {
-            negative=false;
-        }
+
         if (x==Double.NEGATIVE_INFINITY||x==Double.POSITIVE_INFINITY){
             return Double.NaN;
         }
         x=offset(x,accuracy);
-        negative=negative(x);
+        negative=negativeForSin(x);
 
         if (negative)
-            x=Math.abs(x);
+            x=Math.abs(offset(x,accuracy));
 
         while (true){
             BigDecimal fIt=BigDecimal.valueOf(-1);
@@ -91,13 +83,10 @@ public class TrigFunc implements ITrigonometry {
         System.out.println(" x="+x);
         x=offset(x,accuracy);
         System.out.println(" x="+x);
-       //negative=negative(x);
         if (offset(x,accuracy)>=-Math.PI/2&&offset(x,accuracy)<=Math.PI/2)
             negative=false;
         else
             negative=true;
-//        if (negative)
-//            x=Math.abs(x);
         tmp=sin(x,accuracy);
         y=BigDecimal.valueOf(1).subtract(BigDecimal.valueOf(tmp).pow(2)).abs().doubleValue();
         y=Math.pow(y,0.5);

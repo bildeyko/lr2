@@ -21,7 +21,7 @@ public class SinFuncTest {
     public void Before(){
         func = new TrigFunc();
         res = 0;
-        accuracy = 0.01;
+        accuracy = 0.001;
         errorStr = "sin = %f res = %f";
     }
 
