@@ -10,16 +10,16 @@ import java.util.Map;
  */
 public class Dummies {
 
-    protected Map<Double, Double> readValues(String filename)
+    protected Map<String, Double> readValues(String filename)
     {
-        Map<Double, Double> map = new HashMap<>();
+        Map<String, Double> map = new HashMap<>();
         try(FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr))
         {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
-                map.put(Double.parseDouble(parts[0].replace(',','.')), Double.parseDouble(parts[1].replace(',','.')));
+                map.put(parts[0], Double.parseDouble(parts[1].replace(',','.')));
             }
         } catch (Exception ex)
         {

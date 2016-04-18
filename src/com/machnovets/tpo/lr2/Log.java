@@ -7,17 +7,27 @@ import java.io.*;
  */
 public class Log {
     static String filename;
+    static BufferedWriter bw;
 
     public static void write(double x, double y)
     {
-        String str = "%f;%f\n";
+        String str = "%.2f;%f\n";
 
-        try(FileWriter fw = new FileWriter(filename, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw))
+        try
         {
-            out.write(String.format(str, x, y));
+            bw.write(String.format(str, x, y));
         } catch (IOException ex)
+        {
+            System.out.println(ex.toString());
+        }
+    }
+
+    public static void close()
+    {
+        try
+        {
+            bw.close();
+        } catch (Exception ex)
         {
             System.out.println(ex.toString());
         }
@@ -29,6 +39,9 @@ public class Log {
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.close();
+            FileWriter fw = new FileWriter(filename, true);
+            bw = new BufferedWriter(fw);
+
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
